@@ -6,22 +6,75 @@
     <title>Web Site QR Code</title>
     <!-- qrcode.min.js kütüphanesini ekleyin -->
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        /* Modal stilleri */
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        #modalContent {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* Kapatma düğmesi stilleri */
+        #closeBtn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #closeBtn:hover,
+        #closeBtn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
     <!-- QR kodunu göstereceğiniz div -->
     <div id="qrcode"></div>
 
-    <script>
-        // Kullanıcıdan alınan web sitesi linki
-        var websiteLink = prompt("Lütfen bir web sitesi linki girin:");
+    <!-- Modal -->
+    <div id="myModal">
+        <div id="modalContent">
+            <span id="closeBtn" onclick="closeModal()">&times;</span>
+            <p>Lütfen bir web sitesi linki girin:</p>
+            <input type="text" id="websiteLinkInput">
+            <button onclick="generateQRCode()">QR Kodu Oluştur</button>
+        </div>
+    </div>
 
+    <script>
         // QR kodunu oluştur
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: websiteLink,
-            width: 128,
-            height: 128
-        });
+        function generateQRCode() {
+            var websiteLink = document.getElementById("websiteLinkInput").value;
+
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: websiteLink,
+                width: 128,
+                height: 128
+            });
+
+            showQRCode();
+            closeModal();
+        }
 
         // QR kodunu ekrana göster
         function showQRCode() {
@@ -31,8 +84,18 @@
             }
         }
 
+        // Modalı aç
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Modalı kapat
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
         // Sayfa yüklendiğinde QR kodunu göster
-        window.onload = showQRCode;
+        window.onload = openModal;
     </script>
 
 </body>
