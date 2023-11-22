@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Site QR Code</title>
+    <!-- qrcode.min.js kütüphanesini ekleyin -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+
+    <!-- QR kodunu göstereceğiniz div -->
+    <div id="qrcode"></div>
+
+    <script>
+        // Kullanıcıdan alınan web sitesi linki
+        var websiteLink = prompt("Lütfen bir web sitesi linki girin:");
+
+        // QR kodunu oluştur
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: websiteLink,
+            width: 128,
+            height: 128
+        });
+
+        // QR kodunu ekrana göster
+        function showQRCode() {
+            var canvas = document.getElementById("qrcode").getElementsByTagName("canvas")[0];
+            if (canvas) {
+                canvas.style.display = "block";
+            }
+        }
+
+        // Sayfa yüklendiğinde QR kodunu göster
+        window.onload = showQRCode;
+    </script>
+
+</body>
+</html>
