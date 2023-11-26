@@ -89,16 +89,13 @@
 					
 					if (websiteLink == "") {
 						Swal.fire({
-							icon: 'warning',
-							title: 'I LOVE YOU !',
-							text: 'MUAHHH <3'
-							// icon: 'error',
-							// title: 'Hata!',
-							// text: 'Lütfen bir web sitesi linki girin.'
+							icon: 'error',
+							title: 'Hata!',
+							text: 'Lütfen bir web sitesi linki girin.'
 						});
 						return;
 					}
-					else if (websiteLink == "ece" || websiteLink == "Ece") {
+					else if (websiteLink.toLoverCase() == "ece akdemir") {
 						Swal.fire({
 							icon: 'warning',
 							title: 'I LOVE YOU !',
