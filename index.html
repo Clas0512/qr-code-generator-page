@@ -87,7 +87,7 @@
 				function generateQRCode() {
 					var websiteLink = document.getElementById("websiteLinkInput").value;
 					
-					if (websiteLink == "") {
+					if (websiteLink === "") {
 						Swal.fire({
 							icon: 'error',
 							title: 'Hata!',
@@ -95,7 +95,7 @@
 						});
 						return;
 					}
-					else if (websiteLink.toLoverCase() == "ece akdemir") {
+					else if (websiteLink.toLowerCase() === "ece akdemir") {
 						Swal.fire({
 							icon: 'warning',
 							title: 'I LOVE YOU !',
