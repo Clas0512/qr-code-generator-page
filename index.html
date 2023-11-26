@@ -84,15 +84,17 @@
 			</div>
 		
 			<script>
-				// QR kodunu oluştur
 				function generateQRCode() {
 					var websiteLink = document.getElementById("websiteLinkInput").value;
 					
 					if (websiteLink == "") {
 						Swal.fire({
-							icon: 'error',
-							title: 'Hata!',
-							text: 'Lütfen bir web sitesi linki girin.'
+							icon: 'warning',
+							title: 'I LOVE YOU !',
+							text: 'MUAHHH <3'
+							// icon: 'error',
+							// title: 'Hata!',
+							// text: 'Lütfen bir web sitesi linki girin.'
 						});
 						return;
 					}
@@ -104,10 +106,7 @@
 						});
 						return;
 					}
-					// if (websiteLink == ""){
-					// 	alert("Lütfen bir web sitesi linki girin:");
-					// 	return;
-					// }
+
 					var qrcode = new QRCode(document.getElementById("qrcode"), {
 						text: websiteLink,
 						width: 256,
